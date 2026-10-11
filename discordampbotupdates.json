@@ -1,0 +1,18 @@
+[
+    {
+        "UpdateStageName": "Install Bot",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "/bin/bash",
+        "UpdateSourceArgs": "-c \"mkdir -p discordbot && cd discordbot && if [ -z '{{BotSourceURL}}' ]; then if [ -f deploy/install.sh ]; then PYTHON_VERSION='{{PythonVersion}}' bash deploy/install.sh; else echo 'No bot files found. Set Bot download URL in the instance settings (or upload the bot files with the file manager), then press Update.'; exit 1; fi; else echo 'Downloading the bot...' && curl -fsSL '{{BotSourceURL}}' -o .bot-download.tgz && rm -rf cogs core && tar -xzf .bot-download.tgz --strip-components=1 && rm -f .bot-download.tgz && PYTHON_VERSION='{{PythonVersion}}' bash deploy/install.sh; fi\"",
+        "SkipOnFailure": false
+    },
+    {
+        "UpdateStageName": "Install Bot",
+        "UpdateSourcePlatform": "Windows",
+        "UpdateSource": "Executable",
+        "UpdateSourceData": "powershell.exe",
+        "UpdateSourceArgs": "-NoProfile -ExecutionPolicy Bypass -Command \"$ProgressPreference='SilentlyContinue'; New-Item -ItemType Directory -Force discordbot | Out-Null; Set-Location discordbot; $env:PYTHON_VERSION='{{PythonVersion}}'; $u='{{BotSourceURL}}'; if ($u -eq '') { if (Test-Path deploy/install.ps1) { & ./deploy/install.ps1; exit $LASTEXITCODE } else { Write-Host 'No bot files found. Set Bot download URL in the instance settings (or upload the bot files with the file manager), then press Update.'; exit 1 } } else { Write-Host 'Downloading the bot...'; curl.exe -fsSL $u -o .bot-download.tgz; if ($LASTEXITCODE -ne 0) { exit 1 }; Remove-Item -Recurse -Force cogs,core -ErrorAction SilentlyContinue; tar -xzf .bot-download.tgz --strip-components=1; if ($LASTEXITCODE -ne 0) { exit 1 }; Remove-Item .bot-download.tgz; & ./deploy/install.ps1; exit $LASTEXITCODE }\"",
+        "SkipOnFailure": false
+    }
+]

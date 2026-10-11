@@ -1,0 +1,30 @@
+[
+    {
+        "ConfigFile": "amp-settings.env",
+        "ConfigType": "kvp",
+        "ConfigFormat": "{0}={1}",
+        "Subsections": [
+            {
+                "Heading": "$root",
+                "SettingMappings": {
+                    "DiscordToken": "DISCORD_TOKEN",
+                    "GuildId": "GUILD_ID",
+                    "PanelChannelId": "PANEL_CHANNEL_ID",
+                    "AdminRoleIds": "ADMIN_ROLE_IDS",
+                    "UpdateInterval": "UPDATE_INTERVAL",
+                    "ShowLogos": "SHOW_LOGOS",
+                    "PanelButtons": "PANEL_BUTTONS",
+                    "AmpUrl": "AMP_URL",
+                    "AmpUsername": "AMP_USERNAME",
+                    "AmpPassword": "AMP_PASSWORD",
+                    "PublicHost": "PUBLIC_HOST",
+                    "QueryHost": "QUERY_HOST",
+                    "IncludeModules": "INCLUDE_MODULES",
+                    "IncludeInstances": "INCLUDE_INSTANCES",
+                    "ExcludeInstances": "EXCLUDE_INSTANCES",
+                    "LogLevel": "LOG_LEVEL"
+                }
+            }
+        ]
+    }
+]
